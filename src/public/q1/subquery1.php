@@ -14,7 +14,7 @@ class IncomeMinusSpendingByMonth {
 
     public function calculateIncomeMinusSpendingByMonth() {
         $sql = 'SELECT DATE_FORMAT(inc.month, "%Y-%m") AS month,
-                (IFNULL(total_income, 0) - IFNULL(total_spending, 0)) AS income_minus_spending
+                (total_income - total_spending) AS income_minus_spending
                 FROM (
                     -- サブクエリ1: 収入を集計する
                     SELECT DATE_FORMAT(accrual_date, "%Y-%m-01") AS month, 
